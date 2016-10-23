@@ -19,6 +19,7 @@ export class ADevice {
     get PxRatio() { }
     get IsIOS() { }
     get IsAndroid() { }
+    get IsPC() { }
     getActualSize(px) {
         return this.PxRatio * px;
     }

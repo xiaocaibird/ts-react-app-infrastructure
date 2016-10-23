@@ -1,5 +1,8 @@
 export abstract class AErrorHandler {
     private logMixin: tCommon.anyFun = defaultLogError;
+
+    isHasAppGlobalError: boolean = false;
+
     setLogMixin(mixin?: tCommon.anyFun) {
         if (mixin)
             this.logMixin = mixin;
@@ -11,12 +14,12 @@ export abstract class AErrorHandler {
                 this.logMixin(error);
         }
         catch (e) {
-            
+
         }
     }
 }
 
 const defaultLogError = (_error: tCommon.anyObject) => {
-    
+
 }
 

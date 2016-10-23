@@ -1,6 +1,7 @@
 export class AErrorHandler {
     constructor() {
         this.logMixin = defaultLogError;
+        this.isHasAppGlobalError = false;
     }
     setLogMixin(mixin) {
         if (mixin)
