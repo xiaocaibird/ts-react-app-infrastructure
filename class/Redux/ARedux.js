@@ -1,29 +1,36 @@
-import { createStore } from 'redux';
-export class ARedux {
-    constructor(rootReducer) {
+"use strict";
+var redux_1 = require('redux');
+var ARedux = (function () {
+    function ARedux(rootReducer) {
         this.rootReducer = rootReducer;
     }
-    get Store() {
-        if (!this._store) {
-            this.storeCreater();
-        }
-        return this._store;
-    }
-    storeCreater(initState) {
+    Object.defineProperty(ARedux.prototype, "Store", {
+        get: function () {
+            if (!this._store) {
+                this.storeCreater();
+            }
+            return this._store;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ARedux.prototype.storeCreater = function (initState) {
         if (initState) {
-            this._store = createStore(this.rootReducer, initState);
+            this._store = redux_1.createStore(this.rootReducer, initState);
         }
         else {
-            this._store = createStore(this.rootReducer);
+            this._store = redux_1.createStore(this.rootReducer);
         }
-    }
-    initStore(initState) {
+    };
+    ARedux.prototype.initStore = function (initState) {
         this.storeCreater(initState);
-    }
-    changeState(action) {
+    };
+    ARedux.prototype.changeState = function (action) {
         this.Store.dispatch(action);
-    }
-    getState() {
+    };
+    ARedux.prototype.getState = function () {
         return this.Store.getState();
-    }
-}
+    };
+    return ARedux;
+}());
+exports.ARedux = ARedux;

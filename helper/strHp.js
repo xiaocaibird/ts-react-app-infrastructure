@@ -1,10 +1,11 @@
-import * as _ from 'lodash';
-export var strHp;
+"use strict";
+var _ = require('lodash');
+var strHp;
 (function (strHp) {
-    strHp.isstring = (obj) => {
+    strHp.isstring = function (obj) {
         return (typeof obj === 'string');
     };
-    strHp.toJson = (str) => {
+    strHp.toJson = function (str) {
         try {
             return JSON.parse(str);
         }
@@ -12,7 +13,7 @@ export var strHp;
             return null;
         }
     };
-    strHp.trim = (str) => {
+    strHp.trim = function (str) {
         try {
             return _.trim(str.toString());
         }
@@ -20,4 +21,4 @@ export var strHp;
             return '';
         }
     };
-})(strHp || (strHp = {}));
+})(strHp = exports.strHp || (exports.strHp = {}));

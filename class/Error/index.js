@@ -1,2 +1,6 @@
-export * from './AErrorHandler';
-export * from './Errors';
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(require('./AErrorHandler'));
+__export(require('./Errors'));

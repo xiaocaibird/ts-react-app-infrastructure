@@ -1,10 +1,11 @@
-export var funHp;
+"use strict";
+var funHp;
 (function (funHp) {
-    funHp.noop = () => { };
-    funHp.isFun = (fn) => {
+    funHp.noop = function () { };
+    funHp.isFun = function (fn) {
         return (typeof fn === 'function');
     };
-    funHp.isExtendsClass = (sonClass, fatherClass) => {
+    funHp.isExtendsClass = function (sonClass, fatherClass) {
         try {
             return fatherClass.prototype.isPrototypeOf(sonClass.prototype);
         }
@@ -12,4 +13,4 @@ export var funHp;
             return false;
         }
     };
-})(funHp || (funHp = {}));
+})(funHp = exports.funHp || (exports.funHp = {}));

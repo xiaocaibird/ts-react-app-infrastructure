@@ -1,7 +1,8 @@
-import * as _ from 'lodash';
-export var arrayHp;
+"use strict";
+var _ = require('lodash');
+var arrayHp;
 (function (arrayHp) {
-    arrayHp.isArray = (obj) => {
+    arrayHp.isArray = function (obj) {
         return obj instanceof Array;
     };
     arrayHp.findIndex = _.findIndex;
@@ -12,4 +13,4 @@ export var arrayHp;
     arrayHp.filter = _.filter;
     arrayHp.remove = _.remove;
     arrayHp.pullAt = _.pullAt;
-})(arrayHp || (arrayHp = {}));
+})(arrayHp = exports.arrayHp || (exports.arrayHp = {}));

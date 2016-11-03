@@ -5,6 +5,10 @@ export namespace objHp {
 
     export const assign = _.assign;
 
+    export const assignNewObj = (...objs: (Object | undefined | null)[]) => {
+        return assign({}, ...objs);
+    }
+
     export const isEqual = _.isEqual;
 
     export const omit = _.omit;

@@ -1,8 +1,9 @@
-export var dateHp;
+"use strict";
+var dateHp;
 (function (dateHp) {
-    dateHp.format = (t, fmt) => {
+    dateHp.format = function (t, fmt) {
         try {
-            const o = {
+            var o = {
                 "M+": t.getMonth() + 1,
                 "d+": t.getDate(),
                 "h+": t.getHours(),
@@ -13,7 +14,7 @@ export var dateHp;
             };
             if (/(y+)/.test(fmt))
                 fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
-            for (let k in o)
+            for (var k in o)
                 if (new RegExp("(" + k + ")").test(fmt))
                     fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k].toString()) : (("00" + o[k]).substr(o[k].toString().length)));
             return fmt;
@@ -22,8 +23,9 @@ export var dateHp;
             return t.toString();
         }
     };
-    dateHp.diff = (beginDate, endDate, type = 'ms') => {
-        let startTime, endTime, timespan = 0;
+    dateHp.diff = function (beginDate, endDate, type) {
+        if (type === void 0) { type = 'ms'; }
+        var startTime, endTime, timespan = 0;
         try {
             startTime = beginDate.getTime();
             endTime = endDate.getTime();
@@ -48,10 +50,10 @@ export var dateHp;
             return NaN;
         }
     };
-    dateHp.nowDateFormat = (fmt) => {
+    dateHp.nowDateFormat = function (fmt) {
         return dateHp.format(new Date(), fmt ? fmt : 'yyyy-MM-dd');
     };
-    dateHp.getMaxDaysOfDate = (date) => {
+    dateHp.getMaxDaysOfDate = function (date) {
         return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     };
     (function (weekDayTypeEnum) {
@@ -61,14 +63,15 @@ export var dateHp;
         weekDayTypeEnum[weekDayTypeEnum["cn_xingQi"] = 3] = "cn_xingQi";
     })(dateHp.weekDayTypeEnum || (dateHp.weekDayTypeEnum = {}));
     var weekDayTypeEnum = dateHp.weekDayTypeEnum;
-    const weekData = [
+    var weekData = [
         ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'],
         ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
         ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
     ];
-    dateHp.getWeekDay = (date, type = 3) => {
-        const weekDay = date.getDay();
+    dateHp.getWeekDay = function (date, type) {
+        if (type === void 0) { type = 3; }
+        var weekDay = date.getDay();
         return weekData[type][weekDay];
     };
-})(dateHp || (dateHp = {}));
+})(dateHp = exports.dateHp || (exports.dateHp = {}));

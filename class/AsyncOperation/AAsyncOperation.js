@@ -1,46 +1,52 @@
-export class AAsyncOperation {
-    run(task, successCallBack, failCallBack, prepareFun, finallyFun) {
+"use strict";
+var AAsyncOperation = (function () {
+    function AAsyncOperation() {
+    }
+    AAsyncOperation.prototype.run = function (task, successCallBack, failCallBack, prepareFun, finallyFun) {
+        var _this = this;
         if (typeof prepareFun === 'function') {
             prepareFun();
         }
         else {
             this.prepare();
         }
-        return task().then(() => {
+        return task().then(function () {
             if (typeof successCallBack === 'function') {
                 successCallBack();
             }
             else {
-                this.success();
+                _this.success();
             }
             if (typeof finallyFun === 'function') {
                 finallyFun();
             }
             else {
-                this.finally();
+                _this.finally();
             }
-        }, () => {
+        }, function () {
             if (typeof failCallBack === 'function') {
                 failCallBack();
             }
             else {
-                this.fail();
+                _this.fail();
             }
             if (typeof finallyFun === 'function') {
                 finallyFun();
             }
             else {
-                this.finally();
+                _this.finally();
             }
         });
-    }
-    createPromise(fun) {
+    };
+    AAsyncOperation.prototype.createPromise = function (fun) {
         return new Promise(fun);
-    }
-    getResolve(param) {
+    };
+    AAsyncOperation.prototype.getResolve = function (param) {
         return Promise.resolve(param);
-    }
-    getReject(param) {
+    };
+    AAsyncOperation.prototype.getReject = function (param) {
         return Promise.reject(param);
-    }
-}
+    };
+    return AAsyncOperation;
+}());
+exports.AAsyncOperation = AAsyncOperation;

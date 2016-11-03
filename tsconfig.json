@@ -1,13 +1,18 @@
 {
     "compilerOptions": {
         //基本配置
-        "module": "es2015",
+        "module": "commonjs",
         "jsx": "react",
         "moduleResolution": "node",
         "allowJs": true,
-        "experimentalDecorators": true, //es7 特性标签  
+        "experimentalDecorators": true, //es7 特性标签 
+        "lib": [
+            "dom",
+            "es6",
+            "scripthost"
+        ],
         //输出配置
-        "target": "es2015",
+        "target": "es5",
         "pretty": true,
         "noEmitOnError": true,
         "inlineSources": false,

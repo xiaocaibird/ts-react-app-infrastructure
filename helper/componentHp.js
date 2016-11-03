@@ -1,9 +1,10 @@
-export var componentHp;
+"use strict";
+var componentHp;
 (function (componentHp) {
-    componentHp.createTopProps = (props) => {
+    componentHp.createTopProps = function (props) {
         return Object.assign({
             key: undefined,
             ref: undefined
         }, props);
     };
-})(componentHp || (componentHp = {}));
+})(componentHp = exports.componentHp || (exports.componentHp = {}));

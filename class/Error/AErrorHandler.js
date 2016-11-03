@@ -1,13 +1,14 @@
-export class AErrorHandler {
-    constructor() {
+"use strict";
+var AErrorHandler = (function () {
+    function AErrorHandler() {
         this.logMixin = defaultLogError;
         this.isHasAppGlobalError = false;
     }
-    setLogMixin(mixin) {
+    AErrorHandler.prototype.setLogMixin = function (mixin) {
         if (mixin)
             this.logMixin = mixin;
-    }
-    log(error) {
+    };
+    AErrorHandler.prototype.log = function (error) {
         try {
             console.log('error log');
             if (typeof this.logMixin === 'function')
@@ -15,7 +16,9 @@ export class AErrorHandler {
         }
         catch (e) {
         }
-    }
-}
-const defaultLogError = (_error) => {
+    };
+    return AErrorHandler;
+}());
+exports.AErrorHandler = AErrorHandler;
+var defaultLogError = function (_error) {
 };
