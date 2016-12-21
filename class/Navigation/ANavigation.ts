@@ -6,19 +6,19 @@ export abstract class ANavigation<TNavigator, TScene> {
     entryScene: TScene;
     loginScene: TScene;
 
-    abstract toEntry(isReset?: boolean, ...param: any[]): any;
-    abstract toLogin(isReset?: boolean, ...param: any[]): any;
-    abstract pop(...param: any[]): any;
-    abstract back(...param: any[]): any;
-    abstract forward(...param: any[]): any;
-    abstract push(...param: any[]): any;
-    abstract resetTo(...param: any[]): any;
-    abstract jumpTo(...param: any[]): any;
-    abstract replace(...param: any[]): any;
-    abstract openUrl(url: string, ...param: any[]): any;
-    abstract reload(...param: any[]): any;
-    abstract isEntry(...param: any[]): boolean;
-    abstract checkPreChange(...param: any[]): boolean;
+    abstract toEntry(isReset?: boolean, ...p: any[]): any;
+    abstract toLogin(isReset?: boolean, ...p: any[]): any;
+    abstract pop(...p: any[]): any;
+    abstract back(...p: any[]): any;
+    abstract forward(...p: any[]): any;
+    abstract push(...p: any[]): any;
+    abstract resetTo(...p: any[]): any;
+    abstract jumpTo(...p: any[]): any;
+    abstract replace(...p: any[]): any;
+    abstract openUrl(url: string, ...p: any[]): any;
+    abstract reload(...p: any[]): any;
+    abstract isEntry(...p: any[]): boolean;
+    protected abstract checkPreChange(...p: any[]): boolean;
 
     setNavigator(nav: TNavigator) {
         this.navigator = nav;

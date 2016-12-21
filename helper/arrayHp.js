@@ -1,5 +1,5 @@
 "use strict";
-var _ = require('lodash');
+var _ = require("lodash");
 var arrayHp;
 (function (arrayHp) {
     arrayHp.isArray = function (obj) {

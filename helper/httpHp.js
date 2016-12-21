@@ -5,18 +5,27 @@ var httpHp;
         var result = {};
         if (!url)
             return result;
-        var s = url.split('?');
-        if (!s[1])
-            return result;
-        var params = s[1].split('&');
-        if (!params || params.length <= 0)
-            return result;
-        params.forEach(function (v) {
-            var str = v.split('=');
-            if (str[0]) {
-                result[str[0]] = decodeURIComponent(str[1]);
-            }
-        });
+        try {
+            url.trim().split('?')[1].split('&').forEach(function (v) {
+                var s = v.split('=');
+                if (s[0]) {
+                    result[s[0]] = s[1] && decodeURIComponent(s[1]);
+                }
+            });
+        }
+        catch (e) {
+        }
         return result;
+    };
+    httpHp.createUrlParamsStr = function (obj) {
+        if (!obj)
+            return '';
+        return Object.keys(obj).map(function (v) {
+            return v + "=" + encodeURIComponent(obj[v]);
+        }).join('&');
+    };
+    httpHp.httpType = {
+        post: 'POST',
+        get: 'GET'
     };
 })(httpHp = exports.httpHp || (exports.httpHp = {}));

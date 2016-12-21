@@ -1,15 +1,8 @@
 import { dateHp } from '../../helper';
 
 export abstract class AApp<TInitData, TAppConfig> {
-    constructor() {
+    constructor(protected lastStateInStorageKey = "_my__App_lastState") {
         this.upgrade = this.upgrade.bind(this);
-    }
-
-    protected readonly lastUnLoadInfoInStorageKey = "_my__App_storageLastUnLoadInfo";
-
-    protected refreshStateInStorageHourSpan = 24
-    setRefreshStateInStorageHourSpan(hourSpan: number) {
-        this.refreshStateInStorageHourSpan = hourSpan;
     }
 
     protected initData: TInitData;
@@ -26,11 +19,11 @@ export abstract class AApp<TInitData, TAppConfig> {
     abstract upgrade(...p: any[]): any;
     abstract spinnerShow(show: boolean, ...p: any[]): any;
 
-    protected isRefreshStateInStroage(lastUnloadTime: number) {
+    protected isRefreshStateInStroage(lastUnloadTime: number, minHour = 24) {
         const lastUnloadDate = new Date(lastUnloadTime);
-        const hourSpan = dateHp.diff(lastUnloadDate, new Date(), 'h');
+        const hourSpan = dateHp.diff(lastUnloadDate, new Date(), eCommon.dateTime.hour);
 
-        if (hourSpan < this.refreshStateInStorageHourSpan) {
+        if (hourSpan < minHour) {
             return false;
         }
         return true;

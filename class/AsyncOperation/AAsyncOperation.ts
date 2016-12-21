@@ -4,39 +4,39 @@ export abstract class AAsyncOperation {
     protected abstract success(...p: any[]): any;
     protected abstract fail(...p: any[]): any;
 
-    run(task: tCommon.anyPromiseFun, successCallBack?: tCommon.anyFun, failCallBack?: tCommon.anyFun, prepareFun?: tCommon.anyFun, finallyFun?: tCommon.anyFun) {
-        if (typeof prepareFun === 'function') {
-            prepareFun();
+    run(task: tCommon.anyPromiseFun, successCb?: tCommon.anyFun, failCb?: tCommon.anyFun, prepareCb?: tCommon.anyFun, finallyCb?: tCommon.anyFun) {
+        if (typeof prepareCb === 'function') {
+            prepareCb();
         }
         else {
             this.prepare();
         }
         return task().then(
             () => {
-                if (typeof successCallBack === 'function') {
-                    successCallBack();
+                if (typeof successCb === 'function') {
+                    successCb();
                 }
                 else {
                     this.success();
                 }
 
-                if (typeof finallyFun === 'function') {
-                    finallyFun();
+                if (typeof finallyCb === 'function') {
+                    finallyCb();
                 }
                 else {
                     this.finally();
                 }
             },
             () => {
-                if (typeof failCallBack === 'function') {
-                    failCallBack();
+                if (typeof failCb === 'function') {
+                    failCb();
                 }
                 else {
                     this.fail();
                 }
 
-                if (typeof finallyFun === 'function') {
-                    finallyFun();
+                if (typeof finallyCb === 'function') {
+                    finallyCb();
                 }
                 else {
                     this.finally();

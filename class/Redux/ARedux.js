@@ -1,5 +1,5 @@
 "use strict";
-var redux_1 = require('redux');
+var redux_1 = require("redux");
 var ARedux = (function () {
     function ARedux(rootReducer) {
         this.rootReducer = rootReducer;

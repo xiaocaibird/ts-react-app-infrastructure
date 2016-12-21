@@ -1,17 +1,14 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var react_1 = require('react');
-var helper_1 = require('../../helper');
+var tslib_1 = require("tslib");
+var react_1 = require("react");
+var helper_1 = require("../../helper");
 var baseComponent = (function (_super) {
-    __extends(baseComponent, _super);
+    tslib_1.__extends(baseComponent, _super);
     function baseComponent() {
-        _super.apply(this, arguments);
-        this.alwaysUpdate = false;
-        this.noUpdate = false;
+        var _this = _super.apply(this, arguments) || this;
+        _this.alwaysUpdate = false;
+        _this.noUpdate = false;
+        return _this;
     }
     baseComponent.prototype.shouldComponentUpdate = function (nextProps, nextState) {
         if (this.alwaysUpdate)

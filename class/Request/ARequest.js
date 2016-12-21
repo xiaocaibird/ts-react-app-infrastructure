@@ -1,11 +1,11 @@
 "use strict";
-var Error_1 = require('../Error');
-var Factory_1 = require('../Factory');
+var Error_1 = require("../Error");
+var Factory_1 = require("../Factory");
+var helper_1 = require("../../helper");
 var ARequest = (function () {
     function ARequest() {
     }
     ARequest.prototype.request = function (type, url, postData) {
-        var _this = this;
         var p = Factory_1.InfrastructureFactory.AsyncOperation.createPromise(function (resolve, reject) {
             var postAjax = new XMLHttpRequest();
             postAjax.onreadystatechange = function () {
@@ -25,25 +25,35 @@ var ARequest = (function () {
                     reject(postAjax);
                 }
             };
-            postAjax.open(type, url, true);
-            postAjax.send('data=' + encodeURIComponent(JSON.stringify(_this.sealPostData(postData))));
+            var sendData = helper_1.httpHp.createUrlParamsStr(postData);
+            if (helper_1.strHp.equalNoMatchCase(type, helper_1.httpHp.httpType.get)) {
+                postAjax.open(type, url + '?' + sendData, true);
+                postAjax.send(null);
+            }
+            else {
+                postAjax.open(type, url, true);
+                postAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                postAjax.send(sendData);
+            }
         });
         return p;
     };
     ARequest.prototype.post = function (url, postData) {
-        return this.request('POST', url, postData);
+        return this.request(helper_1.httpHp.httpType.post, url, postData);
     };
     ARequest.prototype.get = function (url, postData) {
-        return this.request('GET', url, postData);
+        return this.request(helper_1.httpHp.httpType.get, url, postData);
     };
     ARequest.prototype.createError = function () {
         return new Error_1.requestError(this.errorName);
     };
     ARequest.prototype.setHostUrl = function (url) {
-        this.hostUrl = url;
+        this.defaultHost = url;
     };
-    ARequest.prototype.createFullUrl = function (url) {
-        return this.hostUrl + url;
+    ARequest.prototype.createFullUrl = function (url, host) {
+        if (host)
+            return host + url;
+        return this.defaultHost + url;
     };
     return ARequest;
 }());

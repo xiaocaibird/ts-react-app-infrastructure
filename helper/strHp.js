@@ -1,11 +1,12 @@
 "use strict";
-var _ = require('lodash');
 var strHp;
 (function (strHp) {
-    strHp.isstring = function (obj) {
+    strHp.isString = function (obj) {
         return (typeof obj === 'string');
     };
     strHp.toJson = function (str) {
+        if (!str)
+            return null;
         try {
             return JSON.parse(str);
         }
@@ -13,12 +14,7 @@ var strHp;
             return null;
         }
     };
-    strHp.trim = function (str) {
-        try {
-            return _.trim(str.toString());
-        }
-        catch (e) {
-            return '';
-        }
+    strHp.equalNoMatchCase = function (a, b) {
+        return a.toLowerCase() === b.toLowerCase();
     };
 })(strHp = exports.strHp || (exports.strHp = {}));

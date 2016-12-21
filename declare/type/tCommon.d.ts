@@ -9,7 +9,8 @@ declare namespace tCommon {
     export type anyPromiseFun = (...param: any[]) => Promise<any>;
     export type promiseInitFun = (resolve: anyFun, reject: anyFun) => void;
 
-
     export type reactProps = anyObject;
     export type reactState = anyObject;
+
+    export type allowVoid<T> = T | undefined | null;
 }

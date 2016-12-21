@@ -1,6 +1,6 @@
 {
   "name": "ts-react-app-infrastructure",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "build ReactApp by Typescript",
   "main": "index",
   "scripts": {
@@ -22,10 +22,14 @@
   },
   "homepage": "https://github.com/xiaocaibird/ts-react-app-infrastructure#readme",
   "dependencies": {
+    "@types/lodash": "^4.14.43",
+    "@types/react": "^0.14.55",
+    "@types/react-redux": "^4.4.35",
     "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "tslib": "^1.2.0"
   },
   "files": [
     "class",

@@ -6,10 +6,10 @@ var funHp;
         return (typeof fn === 'function');
     };
     funHp.isExtendsClass = function (sonClass, fatherClass) {
-        try {
+        if (sonClass && fatherClass) {
             return fatherClass.prototype.isPrototypeOf(sonClass.prototype);
         }
-        catch (e) {
+        else {
             return false;
         }
     };

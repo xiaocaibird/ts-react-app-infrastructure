@@ -1,21 +1,18 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var tslib_1 = require("tslib");
 var requestError = (function (_super) {
-    __extends(requestError, _super);
+    tslib_1.__extends(requestError, _super);
     function requestError(name, message, state, postData, returnData) {
         if (message === void 0) { message = ''; }
         if (state === void 0) { state = 0; }
         if (postData === void 0) { postData = {}; }
         if (returnData === void 0) { returnData = {}; }
-        _super.call(this, message);
-        this.state = state;
-        this.postData = postData;
-        this.returnData = returnData;
-        this.name = name;
+        var _this = _super.call(this, message) || this;
+        _this.state = state;
+        _this.postData = postData;
+        _this.returnData = returnData;
+        _this.name = name;
+        return _this;
     }
     return requestError;
 }(Error));

@@ -5,19 +5,15 @@
         "jsx": "react",
         "moduleResolution": "node",
         "allowJs": true,
-        "experimentalDecorators": true, //es7 特性标签 
+        "experimentalDecorators": true,
         "lib": [
             "dom",
-            "es6",
+            "dom.iterable",
+            "es2017",
             "scripthost"
         ],
-        //输出配置
-        "target": "es5",
-        "pretty": true,
-        "noEmitOnError": true,
-        "inlineSources": false,
-        //错误检查
-        /*"allowSyntheticDefaultImports": true,*/
+        //错误检查    
+        "allowSyntheticDefaultImports": false,
         "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
@@ -25,10 +21,16 @@
         "noImplicitReturns": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        /*"preserveConstEnums":true,*/
-        //tsc
+        "alwaysStrict": true,
+        //输出配置
+        "target": "es5",
+        "pretty": true,
+        "noEmitOnError": true,
+        "importHelpers": true,
         "removeComments": true,
-        "sourceMap": false
+        "inlineSources": false,
+        "sourceMap": false,
+        "preserveConstEnums": false
     },
     "exclude": [
         "node_modules"

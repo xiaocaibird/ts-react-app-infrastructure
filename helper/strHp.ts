@@ -1,11 +1,10 @@
-import * as _ from 'lodash';
-
 export namespace strHp {
-    export const isstring = (obj: any) => {
+    export const isString = (obj: any) => {
         return (typeof obj === 'string')
     }
 
-    export const toJson = <T>(str: string) => {
+    export const toJson = <T>(str: tCommon.allowVoid<string>) => {
+        if (!str) return null;
         try {
             return JSON.parse(str) as T;
         }
@@ -14,12 +13,7 @@ export namespace strHp {
         }
     }
 
-    export const trim = (str: string) => {
-        try {
-            return _.trim(str.toString())
-        }
-        catch (e) {
-            return ''
-        }
+    export const equalNoMatchCase = (a: string, b: string) => {
+        return a.toLowerCase() === b.toLowerCase();
     }
 }

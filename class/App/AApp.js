@@ -1,23 +1,16 @@
 "use strict";
-var helper_1 = require('../../helper');
+var helper_1 = require("../../helper");
 var AApp = (function () {
-    function AApp() {
-        this.lastUnLoadInfoInStorageKey = "_my__App_storageLastUnLoadInfo";
-        this.refreshStateInStorageHourSpan = 24;
+    function AApp(lastStateInStorageKey) {
+        if (lastStateInStorageKey === void 0) { lastStateInStorageKey = "_my__App_lastState"; }
+        this.lastStateInStorageKey = lastStateInStorageKey;
         this.upgrade = this.upgrade.bind(this);
     }
-    AApp.prototype.setRefreshStateInStorageHourSpan = function (hourSpan) {
-        this.refreshStateInStorageHourSpan = hourSpan;
-    };
-    Object.defineProperty(AApp.prototype, "AppConfig", {
-        get: function () { },
-        enumerable: true,
-        configurable: true
-    });
-    AApp.prototype.isRefreshStateInStroage = function (lastUnloadTime) {
+    AApp.prototype.isRefreshStateInStroage = function (lastUnloadTime, minHour) {
+        if (minHour === void 0) { minHour = 24; }
         var lastUnloadDate = new Date(lastUnloadTime);
-        var hourSpan = helper_1.dateHp.diff(lastUnloadDate, new Date(), 'h');
-        if (hourSpan < this.refreshStateInStorageHourSpan) {
+        var hourSpan = helper_1.dateHp.diff(lastUnloadDate, new Date(), 3);
+        if (hourSpan < minHour) {
             return false;
         }
         return true;

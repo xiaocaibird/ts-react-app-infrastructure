@@ -2,36 +2,36 @@
 var AAsyncOperation = (function () {
     function AAsyncOperation() {
     }
-    AAsyncOperation.prototype.run = function (task, successCallBack, failCallBack, prepareFun, finallyFun) {
+    AAsyncOperation.prototype.run = function (task, successCb, failCb, prepareCb, finallyCb) {
         var _this = this;
-        if (typeof prepareFun === 'function') {
-            prepareFun();
+        if (typeof prepareCb === 'function') {
+            prepareCb();
         }
         else {
             this.prepare();
         }
         return task().then(function () {
-            if (typeof successCallBack === 'function') {
-                successCallBack();
+            if (typeof successCb === 'function') {
+                successCb();
             }
             else {
                 _this.success();
             }
-            if (typeof finallyFun === 'function') {
-                finallyFun();
+            if (typeof finallyCb === 'function') {
+                finallyCb();
             }
             else {
                 _this.finally();
             }
         }, function () {
-            if (typeof failCallBack === 'function') {
-                failCallBack();
+            if (typeof failCb === 'function') {
+                failCb();
             }
             else {
                 _this.fail();
             }
-            if (typeof finallyFun === 'function') {
-                finallyFun();
+            if (typeof finallyCb === 'function') {
+                finallyCb();
             }
             else {
                 _this.finally();

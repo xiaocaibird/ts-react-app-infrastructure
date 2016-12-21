@@ -14,32 +14,32 @@ export namespace dateHp {
                 fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
             for (let k in o)
                 if (new RegExp("(" + k + ")").test(fmt))
-                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k].toString()) : (("00" + o[k]).substr(o[k].toString().length)));
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k].toString()) : (("00" + o[k]).substr(o[k].toString().length)));
             return fmt;
         }
         catch (e) {
             return t.toString();
         }
     }
-    export const diff = (beginDate: Date, endDate: Date, type: string = 'ms') => {
+    export const diff = (beginDate: Date, endDate: Date, type: eCommon.dateTime = eCommon.dateTime.millisecond) => {
         let startTime: number, endTime: number, timespan: number = 0;
         try {
             startTime = beginDate.getTime();
             endTime = endDate.getTime();
 
-            if (type == 'd') {
+            if (type === eCommon.dateTime.day) {
                 timespan = (endTime - startTime) / (1000 * 60 * 60 * 24);
             }
-            else if (type == 'h') {
+            else if (type === eCommon.dateTime.hour) {
                 timespan = (endTime - startTime) / (1000 * 60 * 60);
             }
-            else if (type == 'm') {
+            else if (type === eCommon.dateTime.minute) {
                 timespan = (endTime - startTime) / (1000 * 60);
             }
-            else if (type == 's') {
+            else if (type === eCommon.dateTime.second) {
                 timespan = (endTime - startTime) / (1000);
             }
-            else if (type == 'ms') {
+            else if (type === eCommon.dateTime.millisecond) {
                 timespan = endTime - startTime;
             }
             return timespan

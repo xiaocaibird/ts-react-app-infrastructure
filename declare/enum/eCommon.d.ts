@@ -13,4 +13,7 @@ declare namespace eCommon {
     export const enum popUp {
         warning, info, fail, success, confirm
     }
+    export const enum dateTime {
+        year, month, day, hour, minute, second, millisecond
+    }
 }
