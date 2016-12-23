@@ -1,3 +1,4 @@
+import * as Redux from 'redux';
 import { createStore } from 'redux';
 
 export abstract class ARedux<TState, TAction> {
