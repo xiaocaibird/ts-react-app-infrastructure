@@ -1,6 +1,6 @@
 declare namespace tRedux {
-    export type reducerHandler = Function
+    type reducerHandler = Function
 
-    export type actionReturn = { type: string, newValue?: newValue }
-    export type newValue = { [k: string]: any }
+    type actionReturn = { type: string, newValue?: newValue }
+    type newValue = { [k: string]: any }
 }

@@ -1,8 +1,8 @@
 declare namespace eCommon {
-    export const enum checkUpgrade {
+    const enum checkUpgrade {
         noNew, haveNew, necessary
     }
-    export const enum requestErrorState {
+    const enum requestErrorState {
         commomError,
         requestFail,
         dataError,
@@ -10,10 +10,10 @@ declare namespace eCommon {
         logicError,
     }
 
-    export const enum popUp {
+    const enum popUp {
         warning, info, fail, success, confirm
     }
-    export const enum dateTime {
+    const enum dateTime {
         year, month, day, hour, minute, second, millisecond
     }
 }
