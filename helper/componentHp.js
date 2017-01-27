@@ -1,8 +1,9 @@
 "use strict";
+var _1 = require("./");
 var componentHp;
 (function (componentHp) {
     componentHp.createTopProps = function (props) {
-        return Object.assign({
+        return _1.objHp.assign({
             key: undefined,
             ref: undefined
         }, props);

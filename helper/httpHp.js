@@ -1,4 +1,5 @@
 "use strict";
+var _1 = require("./");
 var httpHp;
 (function (httpHp) {
     httpHp.getUrlParams = function (url) {
@@ -20,7 +21,7 @@ var httpHp;
     httpHp.createUrlParamsStr = function (obj) {
         if (!obj)
             return '';
-        return Object.keys(obj).map(function (v) {
+        return _1.objHp.keys(obj).map(function (v) {
             return v + "=" + encodeURIComponent(obj[v]);
         }).join('&');
     };

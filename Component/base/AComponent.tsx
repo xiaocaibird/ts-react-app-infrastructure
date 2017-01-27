@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { objHp } from '../../helper';
 
-export abstract class baseComponent<P, S> extends Component<P, S> {
+export abstract class AComponent<P, S> extends Component<P, S> {
     protected alwaysUpdate = false;
     protected noUpdate = false;
     protected shouldComponentUpdate(nextProps: tCommon.reactProps, nextState: tCommon.reactState) {
