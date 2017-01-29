@@ -1,5 +1,3 @@
-import { objHp } from './';
-
 export namespace httpHp {
     export const getUrlParams = (url: tCommon.allowVoid<string>) => {
         const result: {
@@ -23,7 +21,7 @@ export namespace httpHp {
 
     export const createUrlParamsStr = (obj: tCommon.allowVoid<tCommon.anyObject>) => {
         if (!obj) return '';
-        return objHp.keys(obj).map(
+        return Object.keys(obj).map(
             (v) => {
                 return `${v}=${encodeURIComponent(obj[v])}`;
             }

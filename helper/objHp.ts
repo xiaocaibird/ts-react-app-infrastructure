@@ -3,12 +3,8 @@ import * as _ from 'lodash';
 export namespace objHp {
     export const cloneDeep = _.cloneDeep;
 
-    export const assign = _.assign;
-
-    export const keys = _.keys;
-
     export const assignNewObj = (...objs: tCommon.allowVoid<Object>[]) => {
-        return assign({}, ...objs);
+        return Object.assign({}, ...objs);
     }
 
     export const isEqual = _.isEqual;
