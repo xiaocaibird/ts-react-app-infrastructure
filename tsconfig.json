@@ -31,8 +31,5 @@
         "inlineSources": false,
         "sourceMap": false,
         "preserveConstEnums": false
-    },
-    "exclude": [
-        "node_modules"
-    ]
+    }
 }
