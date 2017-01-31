@@ -18,6 +18,7 @@ export abstract class AApp<TInitData, TAppConfig> {
     abstract reset(...p: any[]): any;
     abstract upgrade(...p: any[]): any;
     abstract spinnerShow(show: boolean, ...p: any[]): any;
+    abstract isDebug(): boolean;
 
     protected isRefreshStateInStroage(lastUnloadTime: number, minHour = 24) {
         const lastUnloadDate = new Date(lastUnloadTime);
