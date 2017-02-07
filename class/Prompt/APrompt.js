@@ -10,7 +10,7 @@ var APrompt = (function () {
         if (title === void 0) { title = '操作成功'; }
         return this.createPopUp(title, msg, 3, okCallBack);
     };
-    APrompt.prototype.promptPopUp = function (msg, title, okCallBack) {
+    APrompt.prototype.infoPopUp = function (msg, title, okCallBack) {
         if (title === void 0) { title = '提示'; }
         return this.createPopUp(title, msg, 1, okCallBack);
     };
