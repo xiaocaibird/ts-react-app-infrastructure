@@ -9,7 +9,7 @@ export abstract class APrompt {
     successPopUp(msg: string, title = '操作成功', okCallBack?: tCommon.anyFun) {
         return this.createPopUp(title, msg, eCommon.popUp.success, okCallBack)
     }
-    promptPopUp(msg: string, title = '提示', okCallBack?: tCommon.anyFun) {
+    infoPopUp(msg: string, title = '提示', okCallBack?: tCommon.anyFun) {
         return this.createPopUp(title, msg, eCommon.popUp.info, okCallBack)
     }
     failPopUp(msg: string, title = '操作失败', okCallBack?: tCommon.anyFun) {

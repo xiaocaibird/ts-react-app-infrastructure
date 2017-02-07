@@ -7,7 +7,7 @@ export abstract class ARequest {
     private defaultHost: string;
 
     protected abstract sealPostData(postData?: tCommon.anyObject, ...p: any[]): any;
-    abstract postGlobalHandler<T>(url: string, postData?: tCommon.anyObject, ...p: any[]): Promise<T>;
+    abstract postGlobalHandler(url: string, postData?: tCommon.anyObject, ...p: any[]): Promise<any>;
 
     protected request<T>(type: string, url: string, postData?: tCommon.anyObject) {
         const p = f.AsyncOperation.createPromise<T>((resolve, reject) => {
