@@ -23,22 +23,22 @@ export abstract class ARequest {
                         resolve(data);
                     }
                     catch (e) {
-                        reject(postAjax);
+                        reject({ err: e, postAjax: postAjax });
                     }
                 } else {
                     reject(postAjax);
                 }
             };
 
-            const sendData = httpHp.createUrlParamsStr(postData);
             if (strHp.equalNoMatchCase(type, httpHp.httpType.get)) {
+                const sendData = httpHp.createUrlParamsStr(postData);
                 postAjax.open(type, url + '?' + sendData, true);
                 postAjax.send(null);
             }
             else {
                 postAjax.open(type, url, true);
-                postAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                postAjax.send(sendData);
+                postAjax.setRequestHeader('Content-Type', 'application/json');
+                postAjax.send(JSON.stringify(postData));
             }
         });
 
