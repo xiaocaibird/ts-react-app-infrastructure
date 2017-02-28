@@ -18,6 +18,6 @@ export abstract class AErrorHandler {
 }
 
 const defaultLogError = (_error: tCommon.anyObject) => {
-    console.log('error log');
+    console.warn('There are some errors.Please set custom Error Log method.');
 }
 

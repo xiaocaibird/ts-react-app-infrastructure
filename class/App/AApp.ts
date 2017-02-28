@@ -1,7 +1,7 @@
 import { dateHp } from '../../helper';
 
 export abstract class AApp<TInitData, TAppConfig> {
-    constructor(protected lastStateInStorageKey = "_my__App_lastState") {
+    constructor(protected lastStateInStorageKey = "___my_App_lastState__") {
         this.upgrade = this.upgrade.bind(this);
     }
 

@@ -3,7 +3,7 @@ import { InfrastructureFactory as f } from '../Factory';
 import { httpHp, strHp } from '../../helper';
 
 export abstract class ARequest {
-    readonly errorName: '___request__';
+    readonly errorName = '___request__';
     private defaultHost: string;
 
     protected abstract sealPostData(postData?: tCommon.anyObject, ...p: any[]): any;

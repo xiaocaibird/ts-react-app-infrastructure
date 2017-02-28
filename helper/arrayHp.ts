@@ -6,7 +6,8 @@ import {
     sum as _sum,
     filter as _filter,
     remove as _remove,
-    pullAt as _pullAt
+    pullAt as _pullAt,
+    chunk as _chunk
 } from 'lodash';
 export namespace arrayHp {
     export const isArray = (obj: any) => {
@@ -26,5 +27,7 @@ export namespace arrayHp {
 
     export const remove = _remove;
 
-    export const pullAt = _pullAt
+    export const pullAt = _pullAt;
+    
+    export const chunk = _chunk
 }
