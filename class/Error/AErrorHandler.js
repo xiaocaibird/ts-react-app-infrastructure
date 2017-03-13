@@ -19,5 +19,5 @@ var AErrorHandler = (function () {
 }());
 exports.AErrorHandler = AErrorHandler;
 var defaultLogError = function (_error) {
-    console.log('error log');
+    console.warn('There are some errors.Please set custom Error Log method.');
 };

@@ -13,4 +13,5 @@ var arrayHp;
     arrayHp.filter = lodash_1.filter;
     arrayHp.remove = lodash_1.remove;
     arrayHp.pullAt = lodash_1.pullAt;
+    arrayHp.chunk = lodash_1.chunk;
 })(arrayHp = exports.arrayHp || (exports.arrayHp = {}));

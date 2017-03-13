@@ -4,6 +4,7 @@ var Factory_1 = require("../Factory");
 var helper_1 = require("../../helper");
 var ARequest = (function () {
     function ARequest() {
+        this.errorName = '___request__';
     }
     ARequest.prototype.request = function (type, url, postData) {
         var p = Factory_1.InfrastructureFactory.AsyncOperation.createPromise(function (resolve, reject) {
@@ -18,22 +19,22 @@ var ARequest = (function () {
                         resolve(data);
                     }
                     catch (e) {
-                        reject(postAjax);
+                        reject({ err: e, postAjax: postAjax });
                     }
                 }
                 else {
                     reject(postAjax);
                 }
             };
-            var sendData = helper_1.httpHp.createUrlParamsStr(postData);
             if (helper_1.strHp.equalNoMatchCase(type, helper_1.httpHp.httpType.get)) {
+                var sendData = helper_1.httpHp.createUrlParamsStr(postData);
                 postAjax.open(type, url + '?' + sendData, true);
                 postAjax.send(null);
             }
             else {
                 postAjax.open(type, url, true);
-                postAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                postAjax.send(sendData);
+                postAjax.setRequestHeader('Content-Type', 'application/json');
+                postAjax.send(JSON.stringify(postData));
             }
         });
         return p;

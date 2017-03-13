@@ -2,7 +2,7 @@
 var helper_1 = require("../../helper");
 var AApp = (function () {
     function AApp(lastStateInStorageKey) {
-        if (lastStateInStorageKey === void 0) { lastStateInStorageKey = "_my__App_lastState"; }
+        if (lastStateInStorageKey === void 0) { lastStateInStorageKey = "___my_App_lastState__"; }
         this.lastStateInStorageKey = lastStateInStorageKey;
         this.upgrade = this.upgrade.bind(this);
     }
