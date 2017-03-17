@@ -1,5 +1,5 @@
 export namespace dateHp {
-    export const format = (t: Date, fmt: string) => {
+    export const format = (t: Date, fmt: string = 'yyyy-MM-dd') => {
         try {
             const o: { [k: string]: number } = {
                 "M+": t.getMonth() + 1,                 //月份   

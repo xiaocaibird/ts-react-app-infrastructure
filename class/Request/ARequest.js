@@ -6,7 +6,7 @@ var ARequest = (function () {
     function ARequest() {
         this.errorName = '___request__';
     }
-    ARequest.prototype.request = function (type, url, postData) {
+    ARequest.prototype.request = function (type, url, postData, isFormData) {
         var p = Factory_1.InfrastructureFactory.AsyncOperation.createPromise(function (resolve, reject) {
             var postAjax = new XMLHttpRequest();
             postAjax.onreadystatechange = function () {
@@ -33,8 +33,23 @@ var ARequest = (function () {
             }
             else {
                 postAjax.open(type, url, true);
-                postAjax.setRequestHeader('Content-Type', 'application/json');
-                postAjax.send(JSON.stringify(postData));
+                if (!isFormData) {
+                    postAjax.setRequestHeader('Content-Type', 'application/json');
+                    postAjax.send(JSON.stringify(postData));
+                }
+                else {
+                    try {
+                        if (postData instanceof FormData) {
+                            postAjax.send(postData);
+                        }
+                        else {
+                            postAjax.send(helper_1.httpHp.createFormData(postData));
+                        }
+                    }
+                    catch (e) {
+                        Factory_1.InfrastructureFactory.ErrorHandler.log(e);
+                    }
+                }
             }
         });
         return p;

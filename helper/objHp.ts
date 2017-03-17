@@ -1,9 +1,7 @@
-import {
-    cloneDeep as _cloneDeep,
-    isEqual as _isEqual,
-    omit as _omit,
-    pick as _pick
-} from 'lodash';
+import _cloneDeep = require('lodash/cloneDeep');
+import _isEqual = require('lodash/isEqual');
+import _omit = require('lodash/omit');
+import _pick = require('lodash/pick');
 
 export namespace objHp {
     export const cloneDeep = _cloneDeep;

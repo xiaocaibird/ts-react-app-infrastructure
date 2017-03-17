@@ -1,14 +1,13 @@
-import {
-    findIndex as _findIndex,
-    find as _find,
-    findLast as _findLast,
-    groupBy as _groupBy,
-    sum as _sum,
-    filter as _filter,
-    remove as _remove,
-    pullAt as _pullAt,
-    chunk as _chunk
-} from 'lodash';
+import _findIndex = require('lodash/findIndex');
+import _find = require('lodash/find');
+import _findLast = require('lodash/findLast');
+import _groupBy = require('lodash/groupBy');
+import _sum = require('lodash/sum');
+import _filter = require('lodash/filter');
+import _remove = require('lodash/remove');
+import _pullAt = require('lodash/pullAt');
+import _chunk = require('lodash/chunk');
+
 export namespace arrayHp {
     export const isArray = (obj: any) => {
         return obj instanceof Array;

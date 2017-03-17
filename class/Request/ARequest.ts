@@ -9,7 +9,7 @@ export abstract class ARequest {
     protected abstract sealPostData(postData?: tCommon.anyObject, ...p: any[]): any;
     abstract postGlobalHandler(url: string, postData?: tCommon.anyObject, ...p: any[]): Promise<any>;
 
-    protected request<T>(type: string, url: string, postData?: tCommon.anyObject) {
+    protected request<T>(type: string, url: string, postData?: tCommon.anyObject | FormData, isFormData?: boolean) {
         const p = f.AsyncOperation.createPromise<T>((resolve, reject) => {
             const postAjax = new XMLHttpRequest();
             postAjax.onreadystatechange = () => {
@@ -37,8 +37,23 @@ export abstract class ARequest {
             }
             else {
                 postAjax.open(type, url, true);
-                postAjax.setRequestHeader('Content-Type', 'application/json');
-                postAjax.send(JSON.stringify(postData));
+                if (!isFormData) {
+                    postAjax.setRequestHeader('Content-Type', 'application/json');
+                    postAjax.send(JSON.stringify(postData));
+                }
+                else {
+                    try {
+                        if (postData instanceof FormData) {
+                            postAjax.send(postData);
+                        }
+                        else {
+                            postAjax.send(httpHp.createFormData(postData));
+                        }
+                    }
+                    catch (e) { 
+                        f.ErrorHandler.log(e);
+                    }
+                }
             }
         });
 

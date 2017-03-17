@@ -3,17 +3,17 @@ export abstract class APrompt {
         okCallBack?: tCommon.anyFun,
         cancelCallBack?: tCommon.anyFun, ...p: any[]): any;
 
-    warningPopUp(msg: string, title = '警告', okCallBack?: tCommon.anyFun) {
-        return this.createPopUp(title, msg, eCommon.popUp.warning, okCallBack)
+    warningPopUp(msg: string, title = '警告', callBack?: tCommon.anyFun) {
+        return this.createPopUp(title, msg, eCommon.popUp.warning, callBack)
     }
-    successPopUp(msg: string, title = '操作成功', okCallBack?: tCommon.anyFun) {
-        return this.createPopUp(title, msg, eCommon.popUp.success, okCallBack)
+    successPopUp(msg: string, title = '操作成功', callBack?: tCommon.anyFun) {
+        return this.createPopUp(title, msg, eCommon.popUp.success, callBack)
     }
-    infoPopUp(msg: string, title = '提示', okCallBack?: tCommon.anyFun) {
-        return this.createPopUp(title, msg, eCommon.popUp.info, okCallBack)
+    infoPopUp(msg: string, title = '提示', callBack?: tCommon.anyFun) {
+        return this.createPopUp(title, msg, eCommon.popUp.info, callBack)
     }
-    failPopUp(msg: string, title = '操作失败', okCallBack?: tCommon.anyFun) {
-        return this.createPopUp(title, msg, eCommon.popUp.fail, okCallBack)
+    failPopUp(msg: string, title = '操作失败', callBack?: tCommon.anyFun) {
+        return this.createPopUp(title, msg, eCommon.popUp.fail, callBack)
     }
     confirmPopUp(msg: string, title = '确认操作', okCallBack?: tCommon.anyFun, cancelCallBack?: tCommon.anyFun) {
         return this.createPopUp(title, msg, eCommon.popUp.confirm, okCallBack, cancelCallBack)

@@ -1,8 +1,11 @@
 "use strict";
-var lodash_1 = require("lodash");
+var _cloneDeep = require("lodash/cloneDeep");
+var _isEqual = require("lodash/isEqual");
+var _omit = require("lodash/omit");
+var _pick = require("lodash/pick");
 var objHp;
 (function (objHp) {
-    objHp.cloneDeep = lodash_1.cloneDeep;
+    objHp.cloneDeep = _cloneDeep;
     objHp.assignNewObj = function () {
         var objs = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -10,7 +13,7 @@ var objHp;
         }
         return Object.assign.apply(Object, [{}].concat(objs));
     };
-    objHp.isEqual = lodash_1.isEqual;
-    objHp.omit = lodash_1.omit;
-    objHp.pick = lodash_1.pick;
+    objHp.isEqual = _isEqual;
+    objHp.omit = _omit;
+    objHp.pick = _pick;
 })(objHp = exports.objHp || (exports.objHp = {}));

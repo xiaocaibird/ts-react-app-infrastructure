@@ -5,8 +5,6 @@ var requestError = (function (_super) {
     function requestError(name, message, state, postData, returnData) {
         if (message === void 0) { message = ''; }
         if (state === void 0) { state = 0; }
-        if (postData === void 0) { postData = {}; }
-        if (returnData === void 0) { returnData = {}; }
         var _this = _super.call(this, message) || this;
         _this.state = state;
         _this.postData = postData;

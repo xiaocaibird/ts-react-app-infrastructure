@@ -1,15 +1,15 @@
 export abstract class AErrorHandler {
-    private logMixin: tCommon.anyFun = defaultLogError;
+    private customLogFun: tCommon.anyFun = defaultLogFun;
 
     hasPendingGlobalError: boolean = false;
 
-    setLogMixin(mixin: tCommon.anyFun) {
-        this.logMixin = mixin;
+    setLogFun(fun: tCommon.anyFun) {
+        this.customLogFun = fun;
     }
     log(error: tCommon.anyObject) {
         try {
-            if (typeof this.logMixin === 'function')
-                this.logMixin(error);
+            if (typeof this.customLogFun === 'function')
+                this.customLogFun(error);
         }
         catch (e) {
 
@@ -17,7 +17,7 @@ export abstract class AErrorHandler {
     }
 }
 
-const defaultLogError = (_error: tCommon.anyObject) => {
+const defaultLogFun = (_error: tCommon.anyObject) => {
     console.warn('There are some errors.Please set custom Error Log method.');
 }
 

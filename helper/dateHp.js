@@ -2,6 +2,7 @@
 var dateHp;
 (function (dateHp) {
     dateHp.format = function (t, fmt) {
+        if (fmt === void 0) { fmt = 'yyyy-MM-dd'; }
         try {
             var o = {
                 "M+": t.getMonth() + 1,

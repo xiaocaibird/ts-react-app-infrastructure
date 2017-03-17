@@ -18,7 +18,6 @@ export abstract class ANavigation<TNavigator, TScene> {
     abstract openUrl(url: string, ...p: any[]): any;
     abstract reload(...p: any[]): any;
     abstract isEntry(...p: any[]): boolean;
-    protected abstract checkPreChange(...p: any[]): boolean;
 
     setNavigator(nav: TNavigator) {
         this.navigator = nav;

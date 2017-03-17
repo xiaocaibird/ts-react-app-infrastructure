@@ -4,7 +4,6 @@ var AApp = (function () {
     function AApp(lastStateInStorageKey) {
         if (lastStateInStorageKey === void 0) { lastStateInStorageKey = "___my_App_lastState__"; }
         this.lastStateInStorageKey = lastStateInStorageKey;
-        this.upgrade = this.upgrade.bind(this);
     }
     AApp.prototype.isRefreshStateInStroage = function (lastUnloadTime, minHour) {
         if (minHour === void 0) { minHour = 24; }

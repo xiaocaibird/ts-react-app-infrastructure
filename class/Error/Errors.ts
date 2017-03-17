@@ -3,8 +3,8 @@ export class requestError extends Error {
         name: string,
         message = '',
         public state = eCommon.requestErrorState.commomError,
-        public postData: tCommon.anyObject | undefined = {},
-        public returnData: tCommon.anyObject | undefined = {}
+        public postData?: tCommon.anyObject,
+        public returnData?: tCommon.anyObject
     ) {
         super(message);
         this.name = name;

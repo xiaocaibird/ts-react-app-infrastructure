@@ -2,9 +2,8 @@ import { dateHp } from '../../helper';
 
 export abstract class AApp<TInitData, TAppConfig> {
     constructor(protected lastStateInStorageKey = "___my_App_lastState__") {
-        this.upgrade = this.upgrade.bind(this);
-    }
 
+    }
     protected initData: TInitData;
 
     protected _appConfig: TAppConfig;
@@ -12,11 +11,9 @@ export abstract class AApp<TInitData, TAppConfig> {
 
     protected abstract clearState(...p: any[]): any;
     protected abstract setInitData<T>(...p: any[]): Promise<T>;
-    protected abstract checkUpgrade(...p: any[]): eCommon.checkUpgrade;
 
     abstract init<T>(...p: any[]): Promise<T>;
     abstract reset(...p: any[]): any;
-    abstract upgrade(...p: any[]): any;
     abstract spinnerShow(show: boolean, ...p: any[]): any;
     abstract isDebug(): boolean;
 

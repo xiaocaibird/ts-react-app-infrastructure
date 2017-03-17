@@ -27,7 +27,16 @@ export namespace httpHp {
             }
         ).join('&');
     }
-
+    export const createFormData = (obj: tCommon.allowVoid<tCommon.anyObject>) => { 
+        if (!obj) return null;
+        const formData = new FormData();
+        Object.keys(obj).forEach(
+            (v) => {
+                formData.append(v, obj[v])
+            }
+        );
+        return formData;
+    }
     export const httpType = {
         post: 'POST',
         get: 'GET'

@@ -24,6 +24,15 @@ var httpHp;
             return v + "=" + encodeURIComponent(obj[v]);
         }).join('&');
     };
+    httpHp.createFormData = function (obj) {
+        if (!obj)
+            return null;
+        var formData = new FormData();
+        Object.keys(obj).forEach(function (v) {
+            formData.append(v, obj[v]);
+        });
+        return formData;
+    };
     httpHp.httpType = {
         post: 'POST',
         get: 'GET'

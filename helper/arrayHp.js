@@ -1,17 +1,25 @@
 "use strict";
-var lodash_1 = require("lodash");
+var _findIndex = require("lodash/findIndex");
+var _find = require("lodash/find");
+var _findLast = require("lodash/findLast");
+var _groupBy = require("lodash/groupBy");
+var _sum = require("lodash/sum");
+var _filter = require("lodash/filter");
+var _remove = require("lodash/remove");
+var _pullAt = require("lodash/pullAt");
+var _chunk = require("lodash/chunk");
 var arrayHp;
 (function (arrayHp) {
     arrayHp.isArray = function (obj) {
         return obj instanceof Array;
     };
-    arrayHp.findIndex = lodash_1.findIndex;
-    arrayHp.find = lodash_1.find;
-    arrayHp.findLast = lodash_1.findLast;
-    arrayHp.groupBy = lodash_1.groupBy;
-    arrayHp.sum = lodash_1.sum;
-    arrayHp.filter = lodash_1.filter;
-    arrayHp.remove = lodash_1.remove;
-    arrayHp.pullAt = lodash_1.pullAt;
-    arrayHp.chunk = lodash_1.chunk;
+    arrayHp.findIndex = _findIndex;
+    arrayHp.find = _find;
+    arrayHp.findLast = _findLast;
+    arrayHp.groupBy = _groupBy;
+    arrayHp.sum = _sum;
+    arrayHp.filter = _filter;
+    arrayHp.remove = _remove;
+    arrayHp.pullAt = _pullAt;
+    arrayHp.chunk = _chunk;
 })(arrayHp = exports.arrayHp || (exports.arrayHp = {}));
