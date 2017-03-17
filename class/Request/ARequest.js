@@ -54,8 +54,8 @@ var ARequest = (function () {
         });
         return p;
     };
-    ARequest.prototype.post = function (url, postData) {
-        return this.request(helper_1.httpHp.httpType.post, url, postData);
+    ARequest.prototype.post = function (url, postData, isFormData) {
+        return this.request(helper_1.httpHp.httpType.post, url, postData, isFormData);
     };
     ARequest.prototype.get = function (url, postData) {
         return this.request(helper_1.httpHp.httpType.get, url, postData);

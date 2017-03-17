@@ -50,7 +50,7 @@ export abstract class ARequest {
                             postAjax.send(httpHp.createFormData(postData));
                         }
                     }
-                    catch (e) { 
+                    catch (e) {
                         f.ErrorHandler.log(e);
                     }
                 }
@@ -59,8 +59,8 @@ export abstract class ARequest {
 
         return p;
     }
-    protected post<T>(url: string, postData?: tCommon.anyObject) {
-        return this.request<T>(httpHp.httpType.post, url, postData)
+    protected post<T>(url: string, postData?: tCommon.anyObject | FormData, isFormData?: boolean) {
+        return this.request<T>(httpHp.httpType.post, url, postData, isFormData)
     }
     protected get<T>(url: string, postData?: tCommon.anyObject) {
         return this.request<T>(httpHp.httpType.get, url, postData)
