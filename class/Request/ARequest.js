@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Error_1 = require("../Error");
 var Factory_1 = require("../Factory");
 var helper_1 = require("../../helper");

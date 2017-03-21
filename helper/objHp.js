@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var _cloneDeep = require("lodash/cloneDeep");
 var _isEqual = require("lodash/isEqual");
 var _omit = require("lodash/omit");

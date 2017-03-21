@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var httpHp;
 (function (httpHp) {
     httpHp.getUrlParams = function (url) {

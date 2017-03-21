@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var AErrorHandler = (function () {
     function AErrorHandler() {
         this.customLogFun = defaultLogFun;
