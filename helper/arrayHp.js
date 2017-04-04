@@ -9,6 +9,8 @@ var _filter = require("lodash/filter");
 var _remove = require("lodash/remove");
 var _pullAt = require("lodash/pullAt");
 var _chunk = require("lodash/chunk");
+var _uniq = require("lodash/uniq");
+var _uniqBy = require("lodash/uniqBy");
 var arrayHp;
 (function (arrayHp) {
     arrayHp.isArray = function (obj) {
@@ -23,4 +25,6 @@ var arrayHp;
     arrayHp.remove = _remove;
     arrayHp.pullAt = _pullAt;
     arrayHp.chunk = _chunk;
+    arrayHp.uniq = _uniq;
+    arrayHp.uniqBy = _uniqBy;
 })(arrayHp = exports.arrayHp || (exports.arrayHp = {}));

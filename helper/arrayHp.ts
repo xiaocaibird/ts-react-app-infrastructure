@@ -7,6 +7,8 @@ import _filter = require('lodash/filter');
 import _remove = require('lodash/remove');
 import _pullAt = require('lodash/pullAt');
 import _chunk = require('lodash/chunk');
+import _uniq = require('lodash/uniq');
+import _uniqBy = require('lodash/uniqBy');
 
 export namespace arrayHp {
     export const isArray = (obj: any) => {
@@ -28,5 +30,9 @@ export namespace arrayHp {
 
     export const pullAt = _pullAt;
     
-    export const chunk = _chunk
+    export const chunk = _chunk;
+
+    export const uniq = _uniq;
+
+    export const uniqBy = _uniqBy;
 }
