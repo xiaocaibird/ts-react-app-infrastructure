@@ -62,6 +62,9 @@ export abstract class ADevice {
     protected _isPC: boolean;
     abstract get IsPC(): boolean;
 
+    abstract getDocumentWidth(...p: any[]): number;
+    abstract getDocumentHeight(...p: any[]): number;
+
     abstract getWindowWidth(...p: any[]): number;
     abstract getWindowHeight(...p: any[]): number;
 
