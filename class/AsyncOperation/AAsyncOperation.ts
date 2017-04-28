@@ -1,8 +1,14 @@
+import { promiseHp } from '../../helper';
+
 export abstract class AAsyncOperation {
     protected abstract prepare(...p: any[]): any;
     protected abstract finally(...p: any[]): any;
     protected abstract success(...p: any[]): any;
     protected abstract fail(...p: any[]): any;
+    
+    createPromise = promiseHp.createPromise;
+    getResolve = promiseHp.getResolve;
+    getReject = promiseHp.getReject;
 
     run(task: tCommon.anyPromiseFun, successCb?: tCommon.anyFun, failCb?: tCommon.anyFun, prepareCb?: tCommon.anyFun, finallyCb?: tCommon.anyFun) {
         if (typeof prepareCb === 'function') {
@@ -43,15 +49,5 @@ export abstract class AAsyncOperation {
                 }
             }
         );
-    }
-
-    createPromise<T>(fun: tCommon.promiseInitFun) {
-        return new Promise<T>(fun);
-    }
-    getResolve<T>(param?: T) {
-        return Promise.resolve(param);
-    }
-    getReject<T>(param?: T) {
-        return Promise.reject(param);
     }
 }

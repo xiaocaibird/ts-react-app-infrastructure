@@ -1,19 +1,12 @@
+import { errorHp } from '../../helper';
+
 export abstract class AErrorHandler {
-    private customLogFun: tCommon.anyFun = defaultLogFun;
-
-    hasPendingGlobalError: boolean = false;
-
-    setLogFun(fun: tCommon.anyFun) {
-        this.customLogFun = fun;
+    constructor(customLogFun: tCommon.anyFun = defaultLogFun) {
+        errorHp.setLogFun(customLogFun);
     }
+    hasPendingGlobalError: boolean = false;
     log(error: tCommon.anyObject) {
-        try {
-            if (typeof this.customLogFun === 'function')
-                this.customLogFun(error);
-        }
-        catch (e) {
-
-        }
+        errorHp.log(error);
     }
 }
 

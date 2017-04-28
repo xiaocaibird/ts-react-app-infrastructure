@@ -1,14 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Error_1 = require("../Error");
-var Factory_1 = require("../Factory");
 var helper_1 = require("../../helper");
 var ARequest = (function () {
     function ARequest() {
         this.errorName = '___request__';
     }
     ARequest.prototype.request = function (type, url, postData, isFormData) {
-        var p = Factory_1.InfrastructureFactory.AsyncOperation.createPromise(function (resolve, reject) {
+        var p = helper_1.promiseHp.createPromise(function (resolve, reject) {
             var postAjax = new XMLHttpRequest();
             postAjax.onreadystatechange = function () {
                 if (postAjax.readyState !== 4) {
@@ -48,7 +47,7 @@ var ARequest = (function () {
                         }
                     }
                     catch (e) {
-                        Factory_1.InfrastructureFactory.ErrorHandler.log(e);
+                        helper_1.errorHp.log(e);
                     }
                 }
             }

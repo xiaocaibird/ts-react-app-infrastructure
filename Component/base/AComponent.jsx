@@ -12,10 +12,15 @@ var AComponent = (function (_super) {
         return _this;
     }
     AComponent.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-        if (this.alwaysUpdate)
+        if (this.alwaysUpdate) {
+            this.alwaysUpdate = false;
             return true;
-        if (this.noUpdate)
+        }
+        ;
+        if (this.noUpdate) {
+            this.noUpdate = false;
             return false;
+        }
         return !helper_1.objHp.isEqual(nextProps, this.props) || !helper_1.objHp.isEqual(nextState, this.state);
     };
     return AComponent;

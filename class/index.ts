@@ -8,4 +8,3 @@ export * from './Redux';
 export * from './Request';
 export * from './Storage';
 export * from './User';
-export * from './Factory';

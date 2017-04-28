@@ -10,3 +10,5 @@ __export(require("./funHp"));
 __export(require("./arrayHp"));
 __export(require("./httpHp"));
 __export(require("./componentHp"));
+__export(require("./promiseHp"));
+__export(require("./errorHp"));

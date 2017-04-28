@@ -13,4 +13,3 @@ __export(require("./Redux"));
 __export(require("./Request"));
 __export(require("./Storage"));
 __export(require("./User"));
-__export(require("./Factory"));

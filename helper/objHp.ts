@@ -6,7 +6,7 @@ import _pick = require('lodash/pick');
 export namespace objHp {
     export const cloneDeep = _cloneDeep;
 
-    export const assignNewObj = (...objs: tCommon.allowVoid<Object>[]) => {
+    export const assignNewObj = (...objs: tCommon.allowEmpty<Object>[]) => {
         return Object.assign({}, ...objs);
     }
 

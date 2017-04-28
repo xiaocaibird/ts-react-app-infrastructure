@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var helper_1 = require("../../helper");
 var AAsyncOperation = (function () {
     function AAsyncOperation() {
+        this.createPromise = helper_1.promiseHp.createPromise;
+        this.getResolve = helper_1.promiseHp.getResolve;
+        this.getReject = helper_1.promiseHp.getReject;
     }
     AAsyncOperation.prototype.run = function (task, successCb, failCb, prepareCb, finallyCb) {
         var _this = this;
@@ -38,15 +42,6 @@ var AAsyncOperation = (function () {
                 _this.finally();
             }
         });
-    };
-    AAsyncOperation.prototype.createPromise = function (fun) {
-        return new Promise(fun);
-    };
-    AAsyncOperation.prototype.getResolve = function (param) {
-        return Promise.resolve(param);
-    };
-    AAsyncOperation.prototype.getReject = function (param) {
-        return Promise.reject(param);
     };
     return AAsyncOperation;
 }());

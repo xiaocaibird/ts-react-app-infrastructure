@@ -1,20 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var helper_1 = require("../../helper");
 var AErrorHandler = (function () {
-    function AErrorHandler() {
-        this.customLogFun = defaultLogFun;
+    function AErrorHandler(customLogFun) {
+        if (customLogFun === void 0) { customLogFun = defaultLogFun; }
         this.hasPendingGlobalError = false;
+        helper_1.errorHp.setLogFun(customLogFun);
     }
-    AErrorHandler.prototype.setLogFun = function (fun) {
-        this.customLogFun = fun;
-    };
     AErrorHandler.prototype.log = function (error) {
-        try {
-            if (typeof this.customLogFun === 'function')
-                this.customLogFun(error);
-        }
-        catch (e) {
-        }
+        helper_1.errorHp.log(error);
     };
     return AErrorHandler;
 }());

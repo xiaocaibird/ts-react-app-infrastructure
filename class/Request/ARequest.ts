@@ -1,6 +1,5 @@
 import { requestError } from '../Error';
-import { InfrastructureFactory as f } from '../Factory';
-import { httpHp, strHp } from '../../helper';
+import { httpHp, strHp, promiseHp, errorHp } from '../../helper';
 
 export abstract class ARequest {
     readonly errorName = '___request__';
@@ -10,7 +9,7 @@ export abstract class ARequest {
     abstract postGlobalHandler(url: string, postData?: tCommon.anyObject, ...p: any[]): Promise<any>;
 
     protected request<T>(type: string, url: string, postData?: tCommon.anyObject | FormData, isFormData?: boolean) {
-        const p = f.AsyncOperation.createPromise<T>((resolve, reject) => {
+        const p = promiseHp.createPromise<T>((resolve, reject) => {
             const postAjax = new XMLHttpRequest();
             postAjax.onreadystatechange = () => {
                 if (postAjax.readyState !== 4) {
@@ -51,7 +50,7 @@ export abstract class ARequest {
                         }
                     }
                     catch (e) {
-                        f.ErrorHandler.log(e);
+                        errorHp.log(e);
                     }
                 }
             }

@@ -11,5 +11,5 @@ declare namespace tCommon {
     type reactProps = anyObject;
     type reactState = anyObject;
 
-    type allowVoid<T> = T | undefined | null;
+    type allowEmpty<T> = T | undefined | null;
 }
