@@ -17,19 +17,25 @@ export namespace strHp {
         return a.toLowerCase() === b.toLowerCase();
     }
 
-    export const subText = (s: string, maxLength: number, diffSBC = true, suffix: string = '..') => {
+    export const subText = (params: {
+        str: string,
+        maxLength: number,
+        diffSBC?: boolean,
+        suffix?: string
+    }) => {
+        const { str, maxLength, diffSBC = true, suffix = '..' } = params;
         if (diffSBC) {
             let l = 0;
             let a = '';
-            for (let i = 0; i < s.length; i++) {
-                if (s.charCodeAt(i) > 128) {
+            for (let i = 0; i < str.length; i++) {
+                if (str.charCodeAt(i) > 128) {
                     l += 2;
                 }
                 else {
                     l += 1;
                 }
                 if (l <= maxLength)
-                    a += s[i]
+                    a += str[i]
                 else {
                     a += suffix;
                     break;
@@ -38,7 +44,7 @@ export namespace strHp {
             return a;
         }
         else {
-            return s.length > maxLength ? s.slice(0, maxLength) + suffix : s;
+            return str.length > maxLength ? str.slice(0, maxLength) + suffix : str;
         }
     }
 }

@@ -18,21 +18,20 @@ var strHp;
     strHp.equalNoMatchCase = function (a, b) {
         return a.toLowerCase() === b.toLowerCase();
     };
-    strHp.subText = function (s, maxLength, diffSBC, suffix) {
-        if (diffSBC === void 0) { diffSBC = true; }
-        if (suffix === void 0) { suffix = '..'; }
+    strHp.subText = function (params) {
+        var str = params.str, maxLength = params.maxLength, _a = params.diffSBC, diffSBC = _a === void 0 ? true : _a, _b = params.suffix, suffix = _b === void 0 ? '..' : _b;
         if (diffSBC) {
             var l = 0;
             var a = '';
-            for (var i = 0; i < s.length; i++) {
-                if (s.charCodeAt(i) > 128) {
+            for (var i = 0; i < str.length; i++) {
+                if (str.charCodeAt(i) > 128) {
                     l += 2;
                 }
                 else {
                     l += 1;
                 }
                 if (l <= maxLength)
-                    a += s[i];
+                    a += str[i];
                 else {
                     a += suffix;
                     break;
@@ -41,7 +40,7 @@ var strHp;
             return a;
         }
         else {
-            return s.length > maxLength ? s.slice(0, maxLength) + suffix : s;
+            return str.length > maxLength ? str.slice(0, maxLength) + suffix : str;
         }
     };
 })(strHp = exports.strHp || (exports.strHp = {}));

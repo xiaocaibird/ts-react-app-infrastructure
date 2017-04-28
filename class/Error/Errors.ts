@@ -1,12 +1,28 @@
 export class requestError extends Error {
-    constructor(
+    public state: eCommon.requestErrorState;
+    public postData?: tCommon.anyObject;
+    public returnData?: tCommon.anyObject;
+
+    constructor(params: {
         name: string,
-        message = '',
-        public state = eCommon.requestErrorState.commomError,
-        public postData?: tCommon.anyObject,
-        public returnData?: tCommon.anyObject
+        message?: string,
+        state?: eCommon.requestErrorState,
+        postData?: tCommon.anyObject,
+        returnData?: tCommon.anyObject
+    } | string
     ) {
-        super(message);
-        this.name = name;
+        if (typeof params === 'string') {
+            super('');
+            this.name = params;
+            this.state = eCommon.requestErrorState.commomError;
+        }
+        else {
+            super(params.message || '');
+            const { name, state = eCommon.requestErrorState.commomError, postData, returnData } = params;
+            this.name = name;
+            this.state = state;
+            this.postData = postData;
+            this.returnData = returnData;
+        }
     }
 }
