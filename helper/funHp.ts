@@ -4,7 +4,7 @@ export namespace funHp {
         return (typeof fn === 'function')
     }
 
-    export const isExtendsClass = (sonClass: tCommon.allowEmpty<Function>, fatherClass: tCommon.allowEmpty<Function>) => {
+    export const isExtendsClass = (sonClass: tCommon.allowVoid<Function>, fatherClass: tCommon.allowVoid<Function>) => {
         if (sonClass && fatherClass) {
             return fatherClass.prototype.isPrototypeOf(sonClass.prototype);
         }

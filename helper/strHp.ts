@@ -3,7 +3,7 @@ export namespace strHp {
         return (typeof obj === 'string')
     }
 
-    export const toJson = <T>(str: tCommon.allowEmpty<string>) => {
+    export const toJson = <T>(str: tCommon.allowVoid<string>) => {
         if (!str) return null;
         try {
             return JSON.parse(str) as T;

@@ -6,6 +6,7 @@ import _sum = require('lodash/sum');
 import _filter = require('lodash/filter');
 import _remove = require('lodash/remove');
 import _pullAt = require('lodash/pullAt');
+import _pull = require('lodash/pull');
 import _chunk = require('lodash/chunk');
 import _uniq = require('lodash/uniq');
 import _uniqBy = require('lodash/uniqBy');
@@ -29,7 +30,9 @@ export namespace arrayHp {
     export const remove = _remove;
 
     export const pullAt = _pullAt;
-    
+
+    export const pull = _pull;
+
     export const chunk = _chunk;
 
     export const uniq = _uniq;
