@@ -3,10 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Error_1 = require("../Error");
 var helper_1 = require("../../helper");
 var ARequest = (function () {
-    function ARequest() {
+    function ARequest(contentType) {
+        if (contentType === void 0) { contentType = 'application/json'; }
+        this.contentType = contentType;
         this.errorName = '___request__';
     }
     ARequest.prototype.request = function (type, url, postData, isFormData) {
+        var _this = this;
         var p = helper_1.promiseHp.createPromise(function (resolve, reject) {
             var postAjax = new XMLHttpRequest();
             postAjax.onreadystatechange = function () {
@@ -34,7 +37,7 @@ var ARequest = (function () {
             else {
                 postAjax.open(type, url, true);
                 if (!isFormData) {
-                    postAjax.setRequestHeader('Content-Type', 'application/json');
+                    postAjax.setRequestHeader('Content-Type', _this.contentType);
                     postAjax.send(JSON.stringify(postData));
                 }
                 else {

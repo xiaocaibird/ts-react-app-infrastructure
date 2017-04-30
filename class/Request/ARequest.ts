@@ -2,6 +2,9 @@ import { requestError } from '../Error';
 import { httpHp, strHp, promiseHp, errorHp } from '../../helper';
 
 export abstract class ARequest {
+    constructor(protected contentType = 'application/json') {
+
+    }
     readonly errorName = '___request__';
     private defaultHost: string;
 
@@ -37,7 +40,7 @@ export abstract class ARequest {
             else {
                 postAjax.open(type, url, true);
                 if (!isFormData) {
-                    postAjax.setRequestHeader('Content-Type', 'application/json');
+                    postAjax.setRequestHeader('Content-Type', this.contentType);
                     postAjax.send(JSON.stringify(postData));
                 }
                 else {

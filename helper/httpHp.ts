@@ -1,5 +1,5 @@
 export namespace httpHp {
-    export const getUrlParams = (url: tCommon.allowVoid<string>) => {
+    export const getUrlParams = (url: tCommon.allowEmpty<string>) => {
         const result: {
             [k: string]: string
         } = {};
@@ -19,7 +19,7 @@ export namespace httpHp {
         return result;
     }
 
-    export const createUrlParamsStr = (obj: tCommon.allowVoid<tCommon.anyObject>) => {
+    export const createUrlParamsStr = (obj: tCommon.allowEmpty<tCommon.anyObject>) => {
         if (!obj) return '';
         return Object.keys(obj).map(
             (v) => {
@@ -27,7 +27,7 @@ export namespace httpHp {
             }
         ).join('&');
     }
-    export const createFormData = (obj: tCommon.allowVoid<tCommon.anyObject>) => { 
+    export const createFormData = (obj: tCommon.allowEmpty<tCommon.anyObject>) => { 
         if (!obj) return null;
         const formData = new FormData();
         Object.keys(obj).forEach(
