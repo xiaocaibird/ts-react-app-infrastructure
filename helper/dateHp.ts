@@ -1,25 +1,9 @@
+import * as _moment from 'moment';
+
 export namespace dateHp {
-    export const format = (t: Date, fmt: string = 'yyyy-MM-dd') => {
-        try {
-            const o: { [k: string]: number } = {
-                "M+": t.getMonth() + 1,                 //月份   
-                "d+": t.getDate(),                    //日   
-                "h+": t.getHours(),                   //小时   
-                "m+": t.getMinutes(),                 //分   
-                "s+": t.getSeconds(),                 //秒   
-                "q+": Math.floor((t.getMonth() + 3) / 3), //季度   
-                "S": t.getMilliseconds()             //毫秒   
-            };
-            if (/(y+)/.test(fmt))
-                fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
-            for (let k in o)
-                if (new RegExp("(" + k + ")").test(fmt))
-                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k].toString()) : (("00" + o[k]).substr(o[k].toString().length)));
-            return fmt;
-        }
-        catch (e) {
-            return t.toString();
-        }
+    export const moment = _moment;
+    export const format = (t: Date, fmt: string = 'YYYY-MM-DD') => {
+        _moment(t).format(fmt);
     }
     export const diff = (beginDate: Date, endDate: Date, type: eCommon.dateTime = eCommon.dateTime.millisecond) => {
         let startTime: number, endTime: number, timespan: number = 0;
@@ -49,8 +33,10 @@ export namespace dateHp {
         }
     }
 
+    export const duration = _moment.duration;
+
     export const nowDateFormat = (fmt?: string) => {
-        return format(new Date(), fmt ? fmt : 'yyyy-MM-dd');
+        return format(new Date(), fmt);
     }
 
     export const getMaxDaysOfDate = (date: Date) => {

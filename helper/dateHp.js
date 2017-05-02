@@ -1,29 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var _moment = require("moment");
 var dateHp;
 (function (dateHp) {
+    dateHp.moment = _moment;
     dateHp.format = function (t, fmt) {
-        if (fmt === void 0) { fmt = 'yyyy-MM-dd'; }
-        try {
-            var o = {
-                "M+": t.getMonth() + 1,
-                "d+": t.getDate(),
-                "h+": t.getHours(),
-                "m+": t.getMinutes(),
-                "s+": t.getSeconds(),
-                "q+": Math.floor((t.getMonth() + 3) / 3),
-                "S": t.getMilliseconds()
-            };
-            if (/(y+)/.test(fmt))
-                fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
-            for (var k in o)
-                if (new RegExp("(" + k + ")").test(fmt))
-                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k].toString()) : (("00" + o[k]).substr(o[k].toString().length)));
-            return fmt;
-        }
-        catch (e) {
-            return t.toString();
-        }
+        if (fmt === void 0) { fmt = 'YYYY-MM-DD'; }
+        _moment(t).format(fmt);
     };
     dateHp.diff = function (beginDate, endDate, type) {
         if (type === void 0) { type = 6; }
@@ -52,8 +35,9 @@ var dateHp;
             return NaN;
         }
     };
+    dateHp.duration = _moment.duration;
     dateHp.nowDateFormat = function (fmt) {
-        return dateHp.format(new Date(), fmt ? fmt : 'yyyy-MM-dd');
+        return dateHp.format(new Date(), fmt);
     };
     dateHp.getMaxDaysOfDate = function (date) {
         return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
