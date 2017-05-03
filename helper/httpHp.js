@@ -2,6 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var httpHp;
 (function (httpHp) {
+    httpHp.contentType = {
+        json: 'application/json',
+        form: 'application/x-www-form-urlencoded'
+    };
     httpHp.getUrlParams = function (url) {
         var result = {};
         if (!url)

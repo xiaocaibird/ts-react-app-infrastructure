@@ -1,4 +1,9 @@
 export namespace httpHp {
+    export const contentType = {
+        json: 'application/json',
+        form: 'application/x-www-form-urlencoded'
+    };
+
     export const getUrlParams = (url: tCommon.allowEmpty<string>) => {
         const result: {
             [k: string]: string
@@ -27,7 +32,7 @@ export namespace httpHp {
             }
         ).join('&');
     }
-    export const createFormData = (obj: tCommon.allowEmpty<tCommon.anyObject>) => { 
+    export const createFormData = (obj: tCommon.allowEmpty<tCommon.anyObject>) => {
         if (!obj) return null;
         const formData = new FormData();
         Object.keys(obj).forEach(

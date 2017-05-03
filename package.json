@@ -1,6 +1,6 @@
 {
   "name": "ts-react-app-infrastructure",
-  "version": "1.5.7",
+  "version": "1.5.9",
   "description": "build ReactApp by Typescript",
   "main": "index",
   "scripts": {

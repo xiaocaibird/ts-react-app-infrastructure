@@ -1,5 +1,5 @@
 import { requestError } from '../Error';
-import { httpHp, strHp, promiseHp, errorHp } from '../../helper';
+import { httpHp, strHp, promiseHp } from '../../helper';
 
 export abstract class ARequest {
     constructor(protected contentType = 'application/json') {
@@ -9,11 +9,15 @@ export abstract class ARequest {
     private defaultHost: string;
 
     protected abstract sealPostData(postData?: tCommon.anyObject, ...p: any[]): any;
-    abstract postGlobalHandler(url: string, postData?: tCommon.anyObject, ...p: any[]): Promise<any>;
+    abstract postGlobalHandler(url: string, postData?: tCommon.anyObject, preHandle?: boolean, ...p: any[]): Promise<any>;
 
-    protected request<T>(type: string, url: string, postData?: tCommon.anyObject | FormData, isFormData?: boolean) {
+    protected request<T>(type: string, url: string, postData?: tCommon.anyObject | FormData, timeout: number = 10000) {
         const p = promiseHp.createPromise<T>((resolve, reject) => {
             const postAjax = new XMLHttpRequest();
+            setTimeout(() => {
+                reject({ msg: '请求超时！' });
+                postAjax.abort();
+            }, timeout);
             postAjax.onreadystatechange = () => {
                 if (postAjax.readyState !== 4) {
                     return;
@@ -33,39 +37,37 @@ export abstract class ARequest {
             };
 
             if (strHp.equalNoMatchCase(type, httpHp.httpType.get)) {
-                const sendData = httpHp.createUrlParamsStr(postData);
-                postAjax.open(type, url + '?' + sendData, true);
+                postAjax.open(type, url + '?' + httpHp.createUrlParamsStr(postData), true);
                 postAjax.send(null);
             }
             else {
                 postAjax.open(type, url, true);
+                let isFormData = false;
+
+                if (typeof FormData !== 'undefined' && postData instanceof FormData) {
+                    isFormData = true;
+                }
+
                 if (!isFormData) {
                     postAjax.setRequestHeader('Content-Type', this.contentType);
-                    postAjax.send(JSON.stringify(postData));
+                    if (this.contentType === httpHp.contentType.json)
+                        postAjax.send(JSON.stringify(postData));
+                    else if (this.contentType === httpHp.contentType.form)
+                        postAjax.send(httpHp.createUrlParamsStr(postData));
                 }
                 else {
-                    try {
-                        if (postData instanceof FormData) {
-                            postAjax.send(postData);
-                        }
-                        else {
-                            postAjax.send(httpHp.createFormData(postData));
-                        }
-                    }
-                    catch (e) {
-                        errorHp.log(e);
-                    }
+                    postAjax.send(postData);
                 }
             }
         });
 
         return p;
     }
-    protected post<T>(url: string, postData?: tCommon.anyObject | FormData, isFormData?: boolean) {
-        return this.request<T>(httpHp.httpType.post, url, postData, isFormData)
+    protected post<T>(url: string, postData?: tCommon.anyObject | FormData, timeout?: number) {
+        return this.request<T>(httpHp.httpType.post, url, postData, timeout)
     }
-    protected get<T>(url: string, postData?: tCommon.anyObject) {
-        return this.request<T>(httpHp.httpType.get, url, postData)
+    protected get<T>(url: string, postData?: tCommon.anyObject, timeout?: number) {
+        return this.request<T>(httpHp.httpType.get, url, postData, timeout)
     }
     createError() {
         return new requestError(this.errorName);

@@ -6,7 +6,7 @@ var dateHp;
     dateHp.moment = _moment;
     dateHp.format = function (t, fmt) {
         if (fmt === void 0) { fmt = 'YYYY-MM-DD'; }
-        _moment(t).format(fmt);
+        return _moment(t).format(fmt);
     };
     dateHp.diff = function (beginDate, endDate, type) {
         if (type === void 0) { type = 6; }

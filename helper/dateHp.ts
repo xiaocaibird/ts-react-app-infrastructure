@@ -3,7 +3,7 @@ import * as _moment from 'moment';
 export namespace dateHp {
     export const moment = _moment;
     export const format = (t: Date, fmt: string = 'YYYY-MM-DD') => {
-        _moment(t).format(fmt);
+        return _moment(t).format(fmt);
     }
     export const diff = (beginDate: Date, endDate: Date, type: eCommon.dateTime = eCommon.dateTime.millisecond) => {
         let startTime: number, endTime: number, timespan: number = 0;
